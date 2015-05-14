@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
                    DESC
 
   s.homepage     = "https://github.com/fcanas/Compass"
-  s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  s.license      = { :type => "MIT", :file => "LICENSE" }
   s.author             = { "Fabian Canas" => "fcanas@gmail.com" }
   s.social_media_url   = "http://twitter.com/fcanas"
   s.platform     = :ios, "8.0"

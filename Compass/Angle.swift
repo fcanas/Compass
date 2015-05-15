@@ -82,6 +82,10 @@ public func -= <A :Angle> (inout lhs: A, rhs: A) {
     lhs.value = lhs.value - rhs.value
 }
 
+public func abs <A: Angle> (angle: A) -> A {
+    return A(abs(angle.value))
+}
+
 /// Given an angle, unwinds the angle around a circle to return an angle in the range [0, 2π) or [0, 360) depending on the angle type
 public func unwindAngle <A :Angle> (angle: A) -> A {
     var unwoundAngle = angle % A.Unit

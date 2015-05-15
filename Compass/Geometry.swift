@@ -18,19 +18,19 @@ func unwindAngle(angle: Double) -> Double {
 }
 
 func unwindAngle(angle: CGFloat) -> CGFloat {
-    let twoπ = CGFloat( 2 * M_PI )
-    var unwoundAngle = angle % twoπ
+    let _2π = CGFloat( 2 * M_PI )
+    var unwoundAngle = angle % _2π
     if unwoundAngle < 0 {
-        unwoundAngle += twoπ
+        unwoundAngle += _2π
     }
     return unwoundAngle
 }
 
 func unwindAngle(angle: Float) -> Float {
-    let twoπ = Float( 2 * M_PI )
-    var unwoundAngle = angle % twoπ
+    let _2π = Float( 2 * M_PI )
+    var unwoundAngle = angle % _2π
     if unwoundAngle < 0 {
-        unwoundAngle += twoπ
+        unwoundAngle += _2π
     }
     return unwoundAngle
 }

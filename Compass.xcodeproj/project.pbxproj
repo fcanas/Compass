@@ -13,7 +13,8 @@
 		E70725EA1B053BD600716C6F /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E70725E91B053BD600716C6F /* MapKit.framework */; };
 		E70725EC1B053DC500716C6F /* Polyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70725EB1B053DC500716C6F /* Polyline.swift */; };
 		E70725EE1B053DE800716C6F /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70725ED1B053DE800716C6F /* Vector.swift */; };
-		E70725F01B0544A000716C6F /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70725EF1B0544A000716C6F /* Geometry.swift */; };
+		E70725F01B0544A000716C6F /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70725EF1B0544A000716C6F /* Angle.swift */; };
+		E74BA8911B064E9B008F3C81 /* AngleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BA8901B064E9B008F3C81 /* AngleTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,8 @@
 		E70725E91B053BD600716C6F /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		E70725EB1B053DC500716C6F /* Polyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polyline.swift; sourceTree = "<group>"; };
 		E70725ED1B053DE800716C6F /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
-		E70725EF1B0544A000716C6F /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		E70725EF1B0544A000716C6F /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
+		E74BA8901B064E9B008F3C81 /* AngleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +87,7 @@
 				E70725D01B053B5400716C6F /* Supporting Files */,
 				E70725EB1B053DC500716C6F /* Polyline.swift */,
 				E70725ED1B053DE800716C6F /* Vector.swift */,
-				E70725EF1B0544A000716C6F /* Geometry.swift */,
+				E70725EF1B0544A000716C6F /* Angle.swift */,
 			);
 			path = Compass;
 			sourceTree = "<group>";
@@ -103,6 +105,7 @@
 			children = (
 				E70725DF1B053B5400716C6F /* CompassTests.swift */,
 				E70725DD1B053B5400716C6F /* Supporting Files */,
+				E74BA8901B064E9B008F3C81 /* AngleTests.swift */,
 			);
 			path = CompassTests;
 			sourceTree = "<group>";
@@ -223,7 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E70725EE1B053DE800716C6F /* Vector.swift in Sources */,
-				E70725F01B0544A000716C6F /* Geometry.swift in Sources */,
+				E70725F01B0544A000716C6F /* Angle.swift in Sources */,
 				E70725EC1B053DC500716C6F /* Polyline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E70725E01B053B5400716C6F /* CompassTests.swift in Sources */,
+				E74BA8911B064E9B008F3C81 /* AngleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +422,7 @@
 				E70725E51B053B5400716C6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E70725E61B053B5400716C6F /* Build configuration list for PBXNativeTarget "CompassTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +431,7 @@
 				E70725E81B053B5400716C6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

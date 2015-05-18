@@ -52,12 +52,24 @@ class AngleTests: XCTestCase {
         XCTAssertEqual(unwindAngle(Degree(99.75 - 7 * _2π)), Degree(99.75), "Negative Degrees should unwind to within a single turn of a circle (positive)")
     }
     
+    func testUnwindShouldBePositiveDegrees() { unwindPositive(Degree)() }
+    
+    func testUnwindShouldBePositiveRadians() { unwindPositive(Radian)() }
+    
     func testAbsoluteValue() {
         XCTAssertEqual(abs(Degree(-12)), Degree(12), "Absolute value should work on Degrees")
-        XCTAssertEqual(abs(Radian(-19)), Radian(19), "Absolute value shou;d work on Radians")
+        XCTAssertEqual(abs(Radian(-19)), Radian(19), "Absolute value should work on Radians")
         
         XCTAssertEqual(abs(Degree(12)), Degree(12), "Absolute value should ignore positives on Degrees")
         XCTAssertEqual(abs(Radian(19)), Radian(19), "Absolute value shoud ignore positives on Radians")
+    }
+}
+
+func unwindPositive <T: Angle> (type: T.Type) -> Void -> Void {
+    return {
+        for var i = 0; i < 100; i++ {
+            XCTAssertGreaterThanOrEqual(unwindAngle(T(Double(arc4random()))).value, 0, "Unwound angles should be greater than zero")
+        }
     }
 }
 

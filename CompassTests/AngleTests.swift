@@ -63,6 +63,32 @@ class AngleTests: XCTestCase {
         XCTAssertEqual(abs(Degree(12)), Degree(12), "Absolute value should ignore positives on Degrees")
         XCTAssertEqual(abs(Radian(19)), Radian(19), "Absolute value shoud ignore positives on Radians")
     }
+    
+    func testDegreesFloatLiteral() { floatLiteral(Degree)() }
+    
+    func testRadiansFloatLiteral() { floatLiteral(Radian)() }
+    
+    func testDegreesIntegerLiteral() { integerLiteral(Degree)() }
+    
+    func testRadiansIntegerLiteral() { integerLiteral(Radian)() }
+}
+
+func floatLiteral <T: Angle> (type: T.Type) -> Void -> Void {
+    return {
+        let angle1 :T = 1.75
+        let angle2 :T = 180.33
+        XCTAssertEqual(angle1, T(1.75), "Literal angle should be equal to constructed angle")
+        XCTAssertEqual(angle2, T(180.33), "Literal angle should be equal to constructed angle")
+    }
+}
+
+func integerLiteral <T: Angle> (type: T.Type) -> Void -> Void {
+    return {
+        let angle1 :T = 10
+        let angle2 :T = 180
+        XCTAssertEqual(angle1, T(10), "Literal angle should be equal to constructed angle")
+        XCTAssertEqual(angle2, T(180.0), "Literal angle should be equal to constructed angle")
+    }
 }
 
 func unwindPositive <T: Angle> (type: T.Type) -> Void -> Void {

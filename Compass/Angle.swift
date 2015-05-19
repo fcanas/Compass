@@ -9,7 +9,7 @@
 import Foundation
 
 /// Angle is a base protocol for typed angles to prevent unintentianal mixing of Angles and Degrees
-public protocol Angle : Comparable, FloatLiteralConvertible, IntegerLiteralConvertible, SignedNumberType, AbsoluteValuable {
+public protocol Angle : Comparable, FloatLiteralConvertible, IntegerLiteralConvertible, SignedNumberType {
     var value :Double { set get }
     static var Unit :Self { get }
     init(_ value: Double)
@@ -26,10 +26,6 @@ public struct Degree : Angle {
     }
     public init(_ value: Double) {
         self.value = value
-    }
-    
-    public static func abs(x: Degree) -> Degree {
-        return abs_a(x)
     }
 }
 
@@ -56,10 +52,6 @@ public struct Radian : Angle {
     public init(_ value: Double) {
         self.value = value
     }
-    
-    public static func abs(x: Radian) -> Radian {
-        return abs_a(x)
-    }
 }
 
 extension Radian: FloatLiteralConvertible {
@@ -74,10 +66,6 @@ extension Radian: IntegerLiteralConvertible {
     }
 }
 
-private func abs_a <A: Angle> (angle: A) -> A {
-    return A(abs(angle.value))
-}
-
 public func % <A :Angle> (lhs: A, rhs: A) -> A {
     return A(lhs.value % rhs.value)
 }
@@ -88,18 +76,6 @@ public func + <A :Angle> (lhs: A, rhs: A) -> A {
 
 public func - <A :Angle> (lhs: A, rhs: A) -> A {
     return A(lhs.value - rhs.value)
-}
-
-public func <= <A :Angle> (lhs: A, rhs: A) -> Bool {
-    return lhs.value <= rhs.value
-}
-
-public func >= <A :Angle> (lhs: A, rhs: A) -> Bool {
-    return lhs.value >= rhs.value
-}
-
-public func > <A :Angle> (lhs: A, rhs: A) -> Bool {
-    return lhs.value > rhs.value
 }
 
 public func < <A :Angle> (lhs: A, rhs: A) -> Bool {

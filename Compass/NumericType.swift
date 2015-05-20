@@ -47,3 +47,15 @@ public func += <T :NumericType> (inout lhs: T, rhs: T) {
 public func -= <T :NumericType> (inout lhs: T, rhs: T) {
     lhs.value = lhs.value - rhs.value
 }
+
+public protocol MultiplicativeType : NumericType {
+    typealias ProductType : NumericType
+}
+
+public func * < T :MultiplicativeType, P :NumericType where T.ProductType == P > (lhs: T, rhs: T) -> P {
+    return P(lhs.value * rhs.value)
+}
+
+public func / < T :NumericType, Q: MultiplicativeType where Q.ProductType == T > (lhs: T, rhs: Q) -> Q {
+    return Q(lhs.value / rhs.value)
+}

@@ -34,11 +34,18 @@ extension MKMultiPoint: CollectionType {
     }
 }
 
-/// Given an MKMultiPoint and a coordinate, returns an array of the distance from the supplied coordinate to each point in the polyline.
 
 extension MKMultiPoint {
+    /// Given an MKMultiPoint and a coordinate, returns an array of the distance from the supplied coordinate to each point in the polyline.
     public func distance(toCoordinate: CLLocationCoordinate2D) -> [CLLocationDistance] {
         let mkCoordinate = MKMapPointForCoordinate(toCoordinate)
         return map(self) { MKMetersBetweenMapPoints($0, mkCoordinate) }
+    }
+    
+    /// Given an MKMultiPoint and a CLLocation, returns an array of the distance from the supplied location and error to each point in the polyline.
+    public func distance(toLocation: CLLocation) -> [(CLLocationDistance, CLLocationAccuracy)] {
+        let mkCoordinate = MKMapPointForCoordinate(toLocation.coordinate)
+        let mkError = toLocation.horizontalAccuracy
+        return map(self) { (MKMetersBetweenMapPoints($0, mkCoordinate), mkError) }
     }
 }

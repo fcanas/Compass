@@ -59,3 +59,7 @@ public func * < T :MultiplicativeType, P :NumericType where T.ProductType == P >
 public func / < T :NumericType, Q: MultiplicativeType where Q.ProductType == T > (lhs: T, rhs: Q) -> Q {
     return Q(lhs.value / rhs.value)
 }
+
+public func sqrt <T :NumericType, R: MultiplicativeType where R.ProductType == T> (x: T) -> R {
+    return R(sqrt(x.value))
+}

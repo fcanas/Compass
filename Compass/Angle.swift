@@ -9,10 +9,8 @@
 import Foundation
 
 /// Angle is a base protocol for typed angles to prevent unintentianal mixing of Angles and Degrees
-public protocol Angle : Comparable, FloatLiteralConvertible, IntegerLiteralConvertible, SignedNumberType {
-    var value :Double { set get }
+public protocol Angle : NumericType {
     static var Unit :Self { get }
-    init(_ value: Double)
     init<A :Angle>(angle: A)
 }
 
@@ -64,42 +62,6 @@ extension Radian: IntegerLiteralConvertible {
     public init(integerLiteral value: IntegerLiteralType) {
         self.init(Double(value))
     }
-}
-
-public func % <A :Angle> (lhs: A, rhs: A) -> A {
-    return A(lhs.value % rhs.value)
-}
-
-public func + <A :Angle> (lhs: A, rhs: A) -> A {
-    return A(lhs.value + rhs.value)
-}
-
-public func - <A :Angle> (lhs: A, rhs: A) -> A {
-    return A(lhs.value - rhs.value)
-}
-
-public func < <A :Angle> (lhs: A, rhs: A) -> Bool {
-    return lhs.value < rhs.value
-}
-
-public func == <A :Angle> (lhs: A, rhs: A) -> Bool {
-    return lhs.value == rhs.value
-}
-
-public func += <A :Angle> (inout lhs: A, rhs: A) {
-    lhs.value = lhs.value + rhs.value
-}
-
-public func -= <A :Angle> (inout lhs: A, rhs: A) {
-    lhs.value = lhs.value - rhs.value
-}
-
-public prefix func - <A: Angle> (angle: A) -> A {
-    return A(-angle.value)
-}
-
-public func numericCast<T: Angle, U: Angle>(x: T) -> U {
-    return U(angle: x)
 }
 
 /// Given an angle, unwinds the angle around a circle to return an angle in the range [0, 2π) or [0, 360) depending on the angle type

@@ -16,6 +16,7 @@
 		E70725F01B0544A000716C6F /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70725EF1B0544A000716C6F /* Angle.swift */; };
 		E74BA8911B064E9B008F3C81 /* AngleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BA8901B064E9B008F3C81 /* AngleTests.swift */; };
 		E7942A401B0CDEBE00915E0A /* MultiPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7942A3F1B0CDEBE00915E0A /* MultiPoint.swift */; };
+		E7942A421B0CF57F00915E0A /* NumericType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7942A411B0CF57F00915E0A /* NumericType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,7 @@
 		E70725EF1B0544A000716C6F /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
 		E74BA8901B064E9B008F3C81 /* AngleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleTests.swift; sourceTree = "<group>"; };
 		E7942A3F1B0CDEBE00915E0A /* MultiPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPoint.swift; sourceTree = "<group>"; };
+		E7942A411B0CF57F00915E0A /* NumericType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				E70725ED1B053DE800716C6F /* Vector.swift */,
 				E70725EF1B0544A000716C6F /* Angle.swift */,
 				E7942A3F1B0CDEBE00915E0A /* MultiPoint.swift */,
+				E7942A411B0CF57F00915E0A /* NumericType.swift */,
 			);
 			path = Compass;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7942A421B0CF57F00915E0A /* NumericType.swift in Sources */,
 				E70725EE1B053DE800716C6F /* Vector.swift in Sources */,
 				E7942A401B0CDEBE00915E0A /* MultiPoint.swift in Sources */,
 				E70725F01B0544A000716C6F /* Angle.swift in Sources */,

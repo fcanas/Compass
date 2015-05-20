@@ -8,25 +8,28 @@
 
 import MapKit
 
-public func vectorAtPolylineTail(polyline: MKPolyline) -> CGVector {
-    let points = polyline.points()
-    let p0 = points[polyline.pointCount - 1]
-    let p1 = points[polyline.pointCount - 2]
-    
-    let dx = p1.x - p0.x
-    let dy = p1.y - p0.y
-    
-    return CGVectorMake( CGFloat(dx), CGFloat(dy) )
-}
 
-public func vectorAtPolylineHead(polyline: MKPolyline) -> CGVector {
-    let points = polyline.points()
-    let p0 = points[0]
-    let p1 = points[1]
+extension MKPolyline {
+    public func vectorAtTail() -> CGVector {
+        let points = self.points()
+        let p0 = points[pointCount - 1]
+        let p1 = points[pointCount - 2]
+        
+        let dx = p1.x - p0.x
+        let dy = p1.y - p0.y
+        
+        return CGVectorMake( CGFloat(dx), CGFloat(dy) )
+    }
     
-    let dx = p1.x - p0.x
-    let dy = p1.y - p0.y
-    
-    return CGVectorMake( CGFloat(dx), CGFloat(dy) )
+    public func vectorAtHead() -> CGVector {
+        let points = self.points()
+        let p0 = points[0]
+        let p1 = points[1]
+        
+        let dx = p1.x - p0.x
+        let dy = p1.y - p0.y
+        
+        return CGVectorMake( CGFloat(dx), CGFloat(dy) )
+    }
 }
 

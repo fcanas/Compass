@@ -14,6 +14,8 @@
 		E70725EC1B053DC500716C6F /* Polyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70725EB1B053DC500716C6F /* Polyline.swift */; };
 		E70725EE1B053DE800716C6F /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70725ED1B053DE800716C6F /* Vector.swift */; };
 		E70725F01B0544A000716C6F /* Angle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70725EF1B0544A000716C6F /* Angle.swift */; };
+		E72DDEDF1B0E2E910068550D /* Trace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72DDEDE1B0E2E910068550D /* Trace.swift */; };
+		E72DDEE21B0E50D60068550D /* TraceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E72DDEE11B0E50D60068550D /* TraceTests.swift */; };
 		E74BA8911B064E9B008F3C81 /* AngleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74BA8901B064E9B008F3C81 /* AngleTests.swift */; };
 		E7942A401B0CDEBE00915E0A /* MultiPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7942A3F1B0CDEBE00915E0A /* MultiPoint.swift */; };
 		E7942A421B0CF57F00915E0A /* NumericType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7942A411B0CF57F00915E0A /* NumericType.swift */; };
@@ -41,6 +43,8 @@
 		E70725EB1B053DC500716C6F /* Polyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polyline.swift; sourceTree = "<group>"; };
 		E70725ED1B053DE800716C6F /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
 		E70725EF1B0544A000716C6F /* Angle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Angle.swift; sourceTree = "<group>"; };
+		E72DDEDE1B0E2E910068550D /* Trace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trace.swift; sourceTree = "<group>"; };
+		E72DDEE11B0E50D60068550D /* TraceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TraceTests.swift; sourceTree = "<group>"; };
 		E74BA8901B064E9B008F3C81 /* AngleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleTests.swift; sourceTree = "<group>"; };
 		E7942A3F1B0CDEBE00915E0A /* MultiPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPoint.swift; sourceTree = "<group>"; };
 		E7942A411B0CF57F00915E0A /* NumericType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericType.swift; sourceTree = "<group>"; };
@@ -97,6 +101,8 @@
 				E7942A3F1B0CDEBE00915E0A /* MultiPoint.swift */,
 				E7942A411B0CF57F00915E0A /* NumericType.swift */,
 				E7942A431B0CFC0200915E0A /* Distance.swift */,
+				E72DDEDE1B0E2E910068550D /* Trace.swift */,
+				E72DDEE01B0E500A0068550D /* New Group */,
 			);
 			path = Compass;
 			sourceTree = "<group>";
@@ -115,6 +121,7 @@
 				E70725DF1B053B5400716C6F /* CompassTests.swift */,
 				E70725DD1B053B5400716C6F /* Supporting Files */,
 				E74BA8901B064E9B008F3C81 /* AngleTests.swift */,
+				E72DDEE11B0E50D60068550D /* TraceTests.swift */,
 			);
 			path = CompassTests;
 			sourceTree = "<group>";
@@ -125,6 +132,13 @@
 				E70725DE1B053B5400716C6F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E72DDEE01B0E500A0068550D /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,6 +252,7 @@
 				E7942A421B0CF57F00915E0A /* NumericType.swift in Sources */,
 				E70725EE1B053DE800716C6F /* Vector.swift in Sources */,
 				E7942A401B0CDEBE00915E0A /* MultiPoint.swift in Sources */,
+				E72DDEDF1B0E2E910068550D /* Trace.swift in Sources */,
 				E70725F01B0544A000716C6F /* Angle.swift in Sources */,
 				E70725EC1B053DC500716C6F /* Polyline.swift in Sources */,
 			);
@@ -249,6 +264,7 @@
 			files = (
 				E70725E01B053B5400716C6F /* CompassTests.swift in Sources */,
 				E74BA8911B064E9B008F3C81 /* AngleTests.swift in Sources */,
+				E72DDEE21B0E50D60068550D /* TraceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

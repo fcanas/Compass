@@ -23,7 +23,7 @@ extension Distance :IntegerLiteralConvertible {
 
 extension Distance :FloatLiteralConvertible {
     public init(floatLiteral: FloatLiteralType) {
-        self.init(Double(floatLiteral))
+        self.init(floatLiteral)
     }
 }
 
@@ -42,7 +42,7 @@ extension Area :IntegerLiteralConvertible {
 
 extension Area :FloatLiteralConvertible {
     public init(floatLiteral: FloatLiteralType) {
-        self.init(Double(floatLiteral))
+        self.init(floatLiteral)
     }
 }
 

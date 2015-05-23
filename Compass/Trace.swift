@@ -16,12 +16,14 @@ public struct Trace {
         return _locations
     }
     
+    /// Creates a Trace from an Array of locations by sorting the locations in temporal order
     public init(locations: [CLLocation]) {
         _locations = locations.sorted { (a, b) -> Bool in
             return a.timestamp.compare(b.timestamp) == NSComparisonResult.OrderedAscending
         }
     }
     
+    /// Inserts a CLLocation into the Trace, maintaining temporal order.
     public mutating func insert(location: CLLocation) {
         var index = _locations.count
         var reverseLocationsGenerator = lazy(_locations).reverse().generate()

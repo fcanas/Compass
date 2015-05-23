@@ -34,7 +34,6 @@ extension MKMultiPoint: CollectionType {
     }
 }
 
-
 extension MKMultiPoint {
     /// Given an MKMultiPoint and a coordinate, returns an array of the distance from the supplied coordinate to each point in the polyline.
     public func distance(toCoordinate: CLLocationCoordinate2D) -> [CLLocationDistance] {

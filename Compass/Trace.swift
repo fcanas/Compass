@@ -9,7 +9,19 @@
 import Foundation
 import CoreLocation
 
-public struct Trace {
+public struct Trace :SequenceType {
+    public typealias Generator = GeneratorOf<CLLocation>
+    
+    public func generate() -> Generator {
+        var index = 0
+        return GeneratorOf {
+            if index < self._locations.count {
+                return self._locations[index++]
+            }
+            return nil
+        }
+    }
+    
     private var _locations :[CLLocation]
 
     public var locations :[CLLocation] {
@@ -33,3 +45,4 @@ public struct Trace {
         _locations.insert(location, atIndex: index)
     }
 }
+

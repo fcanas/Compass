@@ -20,6 +20,7 @@
 		E7942A401B0CDEBE00915E0A /* MultiPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7942A3F1B0CDEBE00915E0A /* MultiPoint.swift */; };
 		E7942A421B0CF57F00915E0A /* NumericType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7942A411B0CF57F00915E0A /* NumericType.swift */; };
 		E7942A441B0CFC0200915E0A /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7942A431B0CFC0200915E0A /* Distance.swift */; };
+		E7EFC61E1B163F43006CF4E0 /* RouteSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EFC61D1B163F43006CF4E0 /* RouteSupport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		E7942A3F1B0CDEBE00915E0A /* MultiPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultiPoint.swift; sourceTree = "<group>"; };
 		E7942A411B0CF57F00915E0A /* NumericType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericType.swift; sourceTree = "<group>"; };
 		E7942A431B0CFC0200915E0A /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
+		E7EFC61D1B163F43006CF4E0 /* RouteSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSupport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				E7942A431B0CFC0200915E0A /* Distance.swift */,
 				E72DDEDE1B0E2E910068550D /* Trace.swift */,
 				E72DDEE01B0E500A0068550D /* New Group */,
+				E7EFC61D1B163F43006CF4E0 /* RouteSupport.swift */,
 			);
 			path = Compass;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7942A441B0CFC0200915E0A /* Distance.swift in Sources */,
+				E7EFC61E1B163F43006CF4E0 /* RouteSupport.swift in Sources */,
 				E7942A421B0CF57F00915E0A /* NumericType.swift in Sources */,
 				E70725EE1B053DE800716C6F /* Vector.swift in Sources */,
 				E7942A401B0CDEBE00915E0A /* MultiPoint.swift in Sources */,

@@ -22,11 +22,13 @@ public struct Trace :SequenceType {
         }
     }
     
-    private var _locations :[CLLocation]
+    private var _locations :[CLLocation] = []
 
     public var locations :[CLLocation] {
         return _locations
     }
+    
+    public init() {}
     
     /// Creates a Trace from an Array of locations by sorting the locations in temporal order
     public init(locations: [CLLocation]) {

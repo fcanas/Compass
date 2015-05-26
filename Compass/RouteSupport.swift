@@ -13,27 +13,48 @@ func traceToMultiPoint(trace: Trace, multiPoint: MKMultiPoint) {
     var matrix = map(trace, { multiPoint.distance($0) } )
 }
 
-protocol Route {
-    var distance :CLLocationDistance { get }
-    var polyline :MKPolyline! { get }
-    var steps :[AnyObject]! { get }
-    var routeSteps :[RouteStep] { get }
-}
-
-protocol RouteStep {
-    var instructions :String! { get }
-    var polyline :MKPolyline! { get }
-}
-
-extension MKRouteStep :RouteStep {
+public struct Route {
+    var distance :CLLocationDistance
+    var polyline :MKPolyline
+    var steps :[RouteStep]
     
+    public init(route: MKRoute) {
+        distance = route.distance
+        polyline = route.polyline
+        steps = route.steps as? [RouteStep] ?? []
+    }
 }
 
-extension MKRoute :Route {
-    var routeSteps :[RouteStep] {
+public class RouteStep :NSObject, MKAnnotation {
+    
+    public var coordinate :CLLocationCoordinate2D
+    public var title :String {
         get {
-            return steps as! [MKRouteStep]
+            return instructions
         }
+    }
+    
+    public var instructions :String
+    public var polyline :MKPolyline
+    public var distance :Distance
+    
+    init(routeStep: MKRouteStep) {
+        self.instructions = routeStep.instructions
+        self.distance = Distance(routeStep.distance)
+        self.polyline = routeStep.polyline
+        self.coordinate = MKCoordinateForMapPoint(polyline.points()[0])
+    }
+}
+
+public extension MKMapView {
+    public func addRoute(route: Route) {
+        for step in route.steps {
+            addRouteStep(step)
+        }
+    }
+    
+    public func addRouteStep(routeStep: RouteStep) {
+        addAnnotation(routeStep)
     }
 }
 

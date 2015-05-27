@@ -51,6 +51,7 @@ public extension MKMapView {
         for step in route.steps {
             addRouteStep(step)
         }
+        addOverlay(route.polyline)
     }
     
     public func addRouteStep(routeStep: RouteStep) {

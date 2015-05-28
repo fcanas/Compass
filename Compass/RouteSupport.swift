@@ -21,7 +21,7 @@ public struct Route {
     public init(route: MKRoute) {
         distance = route.distance
         polyline = route.polyline
-        steps = route.steps as? [RouteStep] ?? []
+        steps = map(route.steps as? [MKRouteStep] ?? [], { RouteStep(routeStep: $0) })
     }
 }
 

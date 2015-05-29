@@ -15,8 +15,8 @@ import MapKit
 #endif
 
 public class ChevronPathRenderer: MKOverlayRenderer {
-    public var color: CMPSColor = CMPSColor.blueColor()
-    public var chevronColor: CMPSColor = CMPSColor.cyanColor()
+    public var color: CMPSColor = CMPSColor(red: 0xff/255.0, green: 0x85/255.0, blue: 0x1b/255.0, alpha: 1)
+    public var chevronColor: CMPSColor = CMPSColor(red: 0xff/255.0, green: 0x41/255.0, blue: 0x36/255.0, alpha: 1)
     public let polyline: MKPolyline
     public var lineWidth: CGFloat = 12
     

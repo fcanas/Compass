@@ -11,17 +11,23 @@ import MapKit
 import CompassOSX
 
 class ViewController: NSViewController, MKMapViewDelegate {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+    
+    @IBOutlet var routeBuilder :RouteBuilder?
+    @IBOutlet var mapView :MKMapView?
 
     override var representedObject: AnyObject? {
         didSet {
         // Update the view, if already loaded.
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let providenceCoord = CLLocationCoordinate2DMake(41.8305, -71.38754)
+        let smallSpan = MKCoordinateSpanMake(0.018, 0.018)
+        let providenceRegion = MKCoordinateRegionMake(providenceCoord, smallSpan)
+        map(mapView, {$0.region = providenceRegion})
     }
     
     func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!) {
@@ -38,5 +44,10 @@ class ViewController: NSViewController, MKMapViewDelegate {
         }
         return nil
     }
+    
+    @IBAction func clearRoute(sender: AnyObject) {
+        routeBuilder?.route = nil
+    }
+    
 }
 

@@ -168,7 +168,6 @@
 		E70725C31B053B5400716C6F = {
 			isa = PBXGroup;
 			children = (
-				E733ECA61B178968002161E5 /* MapKit.framework */,
 				E70725CF1B053B5400716C6F /* Compass */,
 				E70725DC1B053B5400716C6F /* CompassTests */,
 				E733EC621B1786F7002161E5 /* Compass-OSX */,
@@ -177,6 +176,7 @@
 				E733EC9A1B178892002161E5 /* Compass AppTests */,
 				E70725CE1B053B5400716C6F /* Products */,
 				E70725E91B053BD600716C6F /* MapKit.framework */,
+				E733ECA61B178968002161E5 /* MapKit.framework */,
 			);
 			sourceTree = "<group>";
 		};

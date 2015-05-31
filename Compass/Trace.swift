@@ -48,3 +48,12 @@ public struct Trace :SequenceType {
     }
 }
 
+import MapKit
+
+public extension Trace {
+    public func polyline() -> MKPolyline {
+        var coords = map(_locations) { $0.coordinate }
+        return MKPolyline(coordinates: &coords, count: coords.count)
+    }
+}
+

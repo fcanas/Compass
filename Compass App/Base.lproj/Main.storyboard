@@ -667,11 +667,17 @@
                                     </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="JNT-cB-rsv"/>
+                                <toolbarItem implicitItemIdentifier="ED64E059-7E47-499D-9144-C0DAEA00CD54" label="Trace" paletteLabel="Tarce" tag="-1" image="NSMobileMe" id="w5q-VB-AFC">
+                                    <connections>
+                                        <action selector="makeTrace:" target="Oky-zY-oP4" id="ePd-PZ-4eJ"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="7sZ-YO-sEq"/>
                                 <toolbarItem reference="a57-qn-xIf"/>
                                 <toolbarItem reference="7sZ-YO-sEq"/>
+                                <toolbarItem reference="w5q-VB-AFC"/>
                             </defaultToolbarItems>
                         </toolbar>
                     </window>
@@ -743,6 +749,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NSMobileMe" width="32" height="32"/>
         <image name="clear" width="64" height="64"/>
     </resources>
 </document>

@@ -49,5 +49,15 @@ class ViewController: NSViewController, MKMapViewDelegate {
         routeBuilder?.route = nil
     }
     
+    @IBAction func makeTrace(sender: AnyObject) {
+        let traceView = MapTraceView()
+        traceView.mapView = mapView
+        view.addSubview(traceView, positioned: NSWindowOrderingMode.Above, relativeTo: mapView)
+        traceView.frame = mapView!.frame
+        traceView.traceCompleted = { trace in
+            self.mapView?.addOverlay(trace.polyline())
+        }
+    }
+    
 }
 

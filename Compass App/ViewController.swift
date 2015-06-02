@@ -56,6 +56,11 @@ class ViewController: NSViewController, MKMapViewDelegate {
         routeBuilder?.route = nil
     }
     
+    @IBAction func clearMap(sender: AnyObject) {
+        clearRoute(sender)
+        mapView?.removeOverlays( mapView?.overlays as? [MKOverlay] )
+    }
+    
     @IBAction func makeTrace(sender: AnyObject) {
         let traceView = MapTraceView()
         traceView.mapView = mapView

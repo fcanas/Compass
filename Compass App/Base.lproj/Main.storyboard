@@ -672,9 +672,15 @@
                                         <action selector="makeTrace:" target="Oky-zY-oP4" id="ePd-PZ-4eJ"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="DDF859DC-9FE5-4507-AB2B-D1799371EF7A" label="Clear All" paletteLabel="Clear All" tag="-1" image="clear" id="1rt-rH-OkI">
+                                    <connections>
+                                        <action selector="clearMap:" target="Oky-zY-oP4" id="bnI-8A-uXk"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="7sZ-YO-sEq"/>
+                                <toolbarItem reference="1rt-rH-OkI"/>
                                 <toolbarItem reference="a57-qn-xIf"/>
                                 <toolbarItem reference="7sZ-YO-sEq"/>
                                 <toolbarItem reference="w5q-VB-AFC"/>

@@ -39,6 +39,13 @@ class ViewController: NSViewController, MKMapViewDelegate {
     }
 
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+        
+        if let polyline = tracePolyline, let overlay = overlay as? MKPolyline {
+            if polyline == overlay {
+                return traceRenderer(overlay)
+            }
+        }
+        
         if let polyline = overlay as? MKPolyline {
             return ChevronPathRenderer(polyline: polyline)
         }
@@ -55,9 +62,31 @@ class ViewController: NSViewController, MKMapViewDelegate {
         view.addSubview(traceView, positioned: NSWindowOrderingMode.Above, relativeTo: mapView)
         traceView.frame = mapView!.frame
         traceView.traceCompleted = { trace in
-            self.mapView?.addOverlay(trace.polyline())
+            self.tracePolyline = trace.polyline
+            self.mapView?.addOverlay(self.tracePolyline)
         }
     }
     
+    var tracePolyline :MKPolyline?
+    
+    func traceRenderer(polyline: MKPolyline) -> MKOverlayRenderer {
+        let r = ChevronPathRenderer(polyline: polyline)
+        r.color = NSColor.greenColor().colorWithAlphaComponent(0.1)
+        r.chevronColor = NSColor.greenColor()
+        return r
+    }
+}
+
+
+import MapKit
+
+extension Trace {
+    
+    var polyline :MKPolyline {
+        get {
+            var coords = map(locations) { $0.coordinate }
+            return MKPolyline(coordinates: &coords, count: coords.count)
+        }
+    }
 }
 

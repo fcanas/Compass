@@ -11,7 +11,6 @@ import MapKit
 import CompassOSX
 
 class MapTraceView: NSView {
-
     var mapView :MKMapView?
     
     var trace :Trace?

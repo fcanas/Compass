@@ -43,6 +43,12 @@
 		E7942A441B0CFC0200915E0A /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7942A431B0CFC0200915E0A /* Distance.swift */; };
 		E7EFC61E1B163F43006CF4E0 /* RouteSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EFC61D1B163F43006CF4E0 /* RouteSupport.swift */; };
 		E7F5C5B71B1CF9A100441C4D /* MapTraceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F5C5B61B1CF9A100441C4D /* MapTraceView.swift */; };
+		E7F5C5B91B1E362A00441C4D /* ColoredPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F5C5B81B1E362A00441C4D /* ColoredPathRenderer.swift */; };
+		E7F5C5BA1B1E362A00441C4D /* ColoredPathRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F5C5B81B1E362A00441C4D /* ColoredPathRenderer.swift */; };
+		E7F5C5BC1B1E3CAC00441C4D /* CollectionMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F5C5BB1B1E3CAC00441C4D /* CollectionMath.swift */; };
+		E7F5C5BD1B1E3CAC00441C4D /* CollectionMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F5C5BB1B1E3CAC00441C4D /* CollectionMath.swift */; };
+		E7F5C5BF1B1E487900441C4D /* NumericUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F5C5BE1B1E487900441C4D /* NumericUtilities.swift */; };
+		E7F5C5C01B1E487900441C4D /* NumericUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F5C5BE1B1E487900441C4D /* NumericUtilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,6 +120,9 @@
 		E7942A431B0CFC0200915E0A /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		E7EFC61D1B163F43006CF4E0 /* RouteSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSupport.swift; sourceTree = "<group>"; };
 		E7F5C5B61B1CF9A100441C4D /* MapTraceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTraceView.swift; sourceTree = "<group>"; };
+		E7F5C5B81B1E362A00441C4D /* ColoredPathRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredPathRenderer.swift; sourceTree = "<group>"; };
+		E7F5C5BB1B1E3CAC00441C4D /* CollectionMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionMath.swift; sourceTree = "<group>"; };
+		E7F5C5BE1B1E487900441C4D /* NumericUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericUtilities.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +219,9 @@
 				E72DDEE01B0E500A0068550D /* New Group */,
 				E7EFC61D1B163F43006CF4E0 /* RouteSupport.swift */,
 				E75C075C1B17BA9A00E719A4 /* ChevronPathRenderer.swift */,
+				E7F5C5B81B1E362A00441C4D /* ColoredPathRenderer.swift */,
+				E7F5C5BB1B1E3CAC00441C4D /* CollectionMath.swift */,
+				E7F5C5BE1B1E487900441C4D /* NumericUtilities.swift */,
 			);
 			path = Compass;
 			sourceTree = "<group>";
@@ -562,10 +574,13 @@
 				E7EFC61E1B163F43006CF4E0 /* RouteSupport.swift in Sources */,
 				E7942A421B0CF57F00915E0A /* NumericType.swift in Sources */,
 				E75C075D1B17BA9A00E719A4 /* ChevronPathRenderer.swift in Sources */,
+				E7F5C5BF1B1E487900441C4D /* NumericUtilities.swift in Sources */,
+				E7F5C5B91B1E362A00441C4D /* ColoredPathRenderer.swift in Sources */,
 				E70725EE1B053DE800716C6F /* Vector.swift in Sources */,
 				E7942A401B0CDEBE00915E0A /* MultiPoint.swift in Sources */,
 				E72DDEDF1B0E2E910068550D /* Trace.swift in Sources */,
 				E70725F01B0544A000716C6F /* Angle.swift in Sources */,
+				E7F5C5BC1B1E3CAC00441C4D /* CollectionMath.swift in Sources */,
 				E70725EC1B053DC500716C6F /* Polyline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -588,10 +603,13 @@
 				E733EC811B178709002161E5 /* RouteSupport.swift in Sources */,
 				E733EC7E1B178709002161E5 /* NumericType.swift in Sources */,
 				E75C075E1B17BA9A00E719A4 /* ChevronPathRenderer.swift in Sources */,
+				E7F5C5C01B1E487900441C4D /* NumericUtilities.swift in Sources */,
+				E7F5C5BA1B1E362A00441C4D /* ColoredPathRenderer.swift in Sources */,
 				E733EC7D1B178709002161E5 /* MultiPoint.swift in Sources */,
 				E733EC7B1B178709002161E5 /* Vector.swift in Sources */,
 				E733EC801B178709002161E5 /* Trace.swift in Sources */,
 				E733EC7C1B178709002161E5 /* Angle.swift in Sources */,
+				E7F5C5BD1B1E3CAC00441C4D /* CollectionMath.swift in Sources */,
 				E733EC7A1B178709002161E5 /* Polyline.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

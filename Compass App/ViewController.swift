@@ -10,14 +10,30 @@ import Cocoa
 import MapKit
 import CompassOSX
 
+func colorMap(value: Double) -> NSColor {
+    
+    let redRamp = ramp(2, -0.5)
+    let greenRamp = ramp(-2, 0.9)
+    let blueRamp = ramp(0, 0.3)
+    println("value: \(value)")
+    println("rgb: (\(redRamp(value)), \(greenRamp(value)), \(blueRamp(value))) ")
+    
+    
+    return NSColor(
+        calibratedRed: CGFloat(clamp(redRamp(value), 0, 1)),
+        green: CGFloat(clamp(greenRamp(value), 0, 1)),
+        blue: CGFloat(clamp(blueRamp(value), 0, 1)),
+        alpha: 1.0)
+}
+
 class ViewController: NSViewController, MKMapViewDelegate {
     
     @IBOutlet var routeBuilder :RouteBuilder?
     @IBOutlet var mapView :MKMapView?
-
+    
     override var representedObject: AnyObject? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
     
@@ -37,15 +53,24 @@ class ViewController: NSViewController, MKMapViewDelegate {
             }
         }
     }
-
+    
+    var trace :Trace!
+    var poly :MKPolyline!
+    
     func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
         
-        if let overlay = overlay as? TracePolyline {
-            return traceRenderer(overlay)
+        if let overlay = overlay as? TracePolyline, let p = poly {
+            let r = ColoredPathRenderer(polyline:overlay)
+            r.colors = map(normalize(traceDistanceToMultiPoint(trace, poly)), colorMap)
+            return r
         }
         
         if let polyline = overlay as? MKPolyline {
-            return ChevronPathRenderer(polyline: polyline)
+            poly = polyline
+            let r = ChevronPathRenderer(polyline: polyline)
+            r.color = NSColor.purpleColor()
+            r.chevronColor = NSColor.cyanColor()
+            return r
         }
         return nil
     }
@@ -65,15 +90,9 @@ class ViewController: NSViewController, MKMapViewDelegate {
         view.addSubview(traceView, positioned: NSWindowOrderingMode.Above, relativeTo: mapView)
         traceView.frame = mapView!.frame
         traceView.traceCompleted = { trace in
+            self.trace = trace
             self.mapView?.addOverlay(trace.polyline)
         }
-    }
-    
-    func traceRenderer(polyline: MKPolyline) -> MKOverlayRenderer {
-        let r = ChevronPathRenderer(polyline: polyline)
-        r.color = NSColor.greenColor().colorWithAlphaComponent(0.1)
-        r.chevronColor = NSColor.greenColor()
-        return r
     }
 }
 

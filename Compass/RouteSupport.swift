@@ -8,9 +8,14 @@
 
 import Foundation
 import MapKit
+import CoreLocation
 
 func traceToMultiPoint(trace: Trace, multiPoint: MKMultiPoint) {
     var matrix = map(trace, { multiPoint.distance($0) } )
+}
+
+public func traceDistanceToMultiPoint(trace: Trace, multiPoint: MKMultiPoint) -> [Double] {
+    return map(trace, { loc in reduce(multiPoint.distance(loc), 10000000, { min($0, $1.0)}) } )
 }
 
 public struct Route {

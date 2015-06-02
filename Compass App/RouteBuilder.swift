@@ -25,23 +25,33 @@ class RouteBuilder: NSObject {
     
     @IBOutlet weak var mapView :MKMapView!
     
-    var route :Route?
+    var route :Route? {
+        didSet {
+            if route == nil {
+                if let r = oldValue {
+                    self.mapView?.removeRoute(r)
+                }
+            }
+        }
+    }
     
-    var touchPoints :[CLLocationCoordinate2D] = [] {
+    var touchPoints :[TouchPoint] = [] {
         didSet {
             if touchPoints.count >= 2 {
                 let request = MKDirectionsRequest()
                 request.transportType = MKDirectionsTransportType.Walking
-                request.setSource(mapItemWithCoordinate(touchPoints[0]))
-                request.setDestination(mapItemWithCoordinate(touchPoints[1]))
+                request.setSource(mapItemWithCoordinate(touchPoints[0].coordinate))
+                request.setDestination(mapItemWithCoordinate(touchPoints[1].coordinate))
                 
                 MKDirections(request: request).calculateDirectionsWithCompletionHandler { (response: MKDirectionsResponse!, error: NSError!) -> Void in
-                    if let r = response.routes.first as? MKRoute {
+                    if let r = response?.routes.first as? MKRoute {
                         self.route = Route(route:r)
                         self.mapView.addRoute(self.route!)
+                        self.mapView.removeAnnotations(self.touchPoints)
+                        self.touchPoints = []
                     }
                 }
-
+                
             }
         }
     }
@@ -56,7 +66,8 @@ class RouteBuilder: NSObject {
         }
         
         let touchCoord = mapView.convertPoint(sender.locationInView(mapView), toCoordinateFromView: mapView)
-        mapView.addAnnotation(TouchPoint(coordinate: touchCoord))
-        touchPoints.append(touchCoord)
+        let tp = TouchPoint(coordinate: touchCoord)
+        mapView.addAnnotation(tp)
+        touchPoints.append(tp)
     }
 }

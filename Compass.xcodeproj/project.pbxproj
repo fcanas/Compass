@@ -42,6 +42,7 @@
 		E7942A421B0CF57F00915E0A /* NumericType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7942A411B0CF57F00915E0A /* NumericType.swift */; };
 		E7942A441B0CFC0200915E0A /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7942A431B0CFC0200915E0A /* Distance.swift */; };
 		E7EFC61E1B163F43006CF4E0 /* RouteSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7EFC61D1B163F43006CF4E0 /* RouteSupport.swift */; };
+		E7F5C5B71B1CF9A100441C4D /* MapTraceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F5C5B61B1CF9A100441C4D /* MapTraceView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +113,7 @@
 		E7942A411B0CF57F00915E0A /* NumericType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumericType.swift; sourceTree = "<group>"; };
 		E7942A431B0CFC0200915E0A /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		E7EFC61D1B163F43006CF4E0 /* RouteSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RouteSupport.swift; sourceTree = "<group>"; };
+		E7F5C5B61B1CF9A100441C4D /* MapTraceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapTraceView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,7 +170,6 @@
 		E70725C31B053B5400716C6F = {
 			isa = PBXGroup;
 			children = (
-				E733ECA61B178968002161E5 /* MapKit.framework */,
 				E70725CF1B053B5400716C6F /* Compass */,
 				E70725DC1B053B5400716C6F /* CompassTests */,
 				E733EC621B1786F7002161E5 /* Compass-OSX */,
@@ -177,6 +178,7 @@
 				E733EC9A1B178892002161E5 /* Compass AppTests */,
 				E70725CE1B053B5400716C6F /* Products */,
 				E70725E91B053BD600716C6F /* MapKit.framework */,
+				E733ECA61B178968002161E5 /* MapKit.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -290,6 +292,7 @@
 				E733EC901B178891002161E5 /* Main.storyboard */,
 				E733EC881B178891002161E5 /* Supporting Files */,
 				E733ECAA1B178ED6002161E5 /* RouteBuilder.swift */,
+				E7F5C5B61B1CF9A100441C4D /* MapTraceView.swift */,
 			);
 			path = "Compass App";
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E733EC8D1B178891002161E5 /* ViewController.swift in Sources */,
+				E7F5C5B71B1CF9A100441C4D /* MapTraceView.swift in Sources */,
 				E733ECAB1B178ED6002161E5 /* RouteBuilder.swift in Sources */,
 				E733EC8B1B178891002161E5 /* AppDelegate.swift in Sources */,
 			);

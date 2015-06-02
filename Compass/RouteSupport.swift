@@ -54,8 +54,19 @@ public extension MKMapView {
         addOverlay(route.polyline)
     }
     
+    public func removeRoute(route: Route) {
+        for step in route.steps {
+            removeRouteStep(step)
+        }
+        removeOverlay(route.polyline)
+    }
+    
     public func addRouteStep(routeStep: RouteStep) {
         addAnnotation(routeStep)
+    }
+    
+    public func removeRouteStep(routeStep: RouteStep) {
+        removeAnnotation(routeStep)
     }
 }
 

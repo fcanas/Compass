@@ -9,6 +9,7 @@
 import Cocoa
 import MapKit
 import CompassOSX
+import CoreGraphics
 
 class MapTraceView: NSView {
     var mapView :MKMapView?
@@ -16,6 +17,8 @@ class MapTraceView: NSView {
     var trace :Trace?
     
     var traceCompleted :((trace: Trace) -> Void)?
+    
+    private var path :CGMutablePathRef = CGPathCreateMutable()
     
     override var acceptsFirstResponder :Bool {
         get {
@@ -29,13 +32,25 @@ class MapTraceView: NSView {
     
     override func mouseDown(theEvent: NSEvent) {
         trace = Trace()
+        let point = convertPoint(theEvent.locationInWindow, fromView: nil)
+        CGPathMoveToPoint(path, nil, point.x, point.y)
     }
     
     override func mouseDragged(theEvent: NSEvent) {
         let point = convertPoint(theEvent.locationInWindow, fromView: nil)
+        let lastPoint = CGPathGetCurrentPoint(path)
+        CGPathAddLineToPoint(path, nil, point.x, point.y)
         if let coord = mapView?.convertPoint(point, toCoordinateFromView: self) {
             trace?.insert(CLLocation(latitude: coord.latitude, longitude: coord.longitude))
         }
+        var dirtyRect = NSRect(
+            x: min(lastPoint.x, point.x),
+            y: min(lastPoint.y, point.y),
+            width: max(lastPoint.x, point.x) - min(lastPoint.x, point.x),
+            height: max(lastPoint.y, point.y) - min(lastPoint.y, point.y))
+        
+        dirtyRect.inset(dx: -12, dy: -12)
+        setNeedsDisplayInRect(dirtyRect)
     }
     
     override func mouseUp(theEvent: NSEvent) {
@@ -45,8 +60,12 @@ class MapTraceView: NSView {
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-
-        // Drawing code here.
+        
+        let context = NSGraphicsContext.currentContext()?.CGContext
+        NSColor.greenColor().set()
+        CGContextSetLineWidth(context, 12)
+        CGContextAddPath(context, path)
+        CGContextStrokePath(context)
     }
     
 }

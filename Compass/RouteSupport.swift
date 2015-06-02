@@ -42,7 +42,7 @@ public class RouteStep :NSObject, MKAnnotation {
         self.instructions = routeStep.instructions
         self.distance = Distance(routeStep.distance)
         self.polyline = routeStep.polyline
-        self.coordinate = MKCoordinateForMapPoint(polyline.points()[0])
+        self.coordinate = MKCoordinateForMapPoint(polyline.points()[polyline.pointCount - 1])
     }
 }
 

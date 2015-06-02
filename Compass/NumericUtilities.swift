@@ -8,10 +8,10 @@
 
 import Foundation
 
-public func clamp(value :Double, minimum :Double, maximum :Double) -> Double {
+public func clamp<T :Comparable>(value :T, minimum :T, maximum :T) -> T {
     return min(max(value, minimum), maximum)
 }
 
 public func ramp(m :Double, b :Double) -> (Double) -> (Double) {
-    return { x in m*x + b }
+    return { x in m * x + b }
 }

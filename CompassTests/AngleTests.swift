@@ -71,6 +71,22 @@ class AngleTests: XCTestCase {
     func testDegreesIntegerLiteral() { integerLiteral(Degree)() }
     
     func testRadiansIntegerLiteral() { integerLiteral(Radian)() }
+    
+    func testDegreeTrigonometry() {
+        let eps = 0.0000001
+        
+        XCTAssertEqual(sin(Degree(0)), 0, "sin of 0 degrees should be zero")
+        XCTAssertEqual(sin(Degree(90)), 1, "sin of 90 degrees should be 1")
+        XCTAssertEqual(sin(Degree(45)), 1/sqrt(2), "sin of 45 degrees should be 1/sqrt(2)")
+        
+        XCTAssertEqual(cos(Degree(0)), 1, "cos of 0 degrees should be 1")
+        XCTAssertEqualWithAccuracy(cos(Degree(90)), 0, eps, "cos of 90 degrees should be 0")
+        XCTAssertEqualWithAccuracy(cos(Degree(45)), 1/sqrt(2), eps, "cos of 45 degrees should be 1/sqrt(2)")
+        
+        XCTAssertEqual(tan(Degree(0)), 0, "tan of 0 degrees should be 1")
+        XCTAssertEqualWithAccuracy(tan(Degree(30)), 1/sqrt(3), eps, "tan of 30 degrees should be 1/sqrt(3)")
+        XCTAssertEqualWithAccuracy(tan(Degree(45)), 1, eps, "tan of 45 degrees should be 1")
+    }
 }
 
 func floatLiteral <T: Angle> (type: T.Type) -> Void -> Void {

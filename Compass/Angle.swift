@@ -73,3 +73,18 @@ public func unwindAngle <A :Angle> (angle: A) -> A {
     return unwoundAngle
 }
 
+// MARK: Trigonometric functions
+
+public func sin<T :Angle>(angle: T) -> Double {
+    return sin(Radian(angle: angle).value)
+}
+
+public func cos<T :Angle>(angle: T) -> Double {
+    return cos(Radian(angle: angle).value)
+}
+
+public func tan<T :Angle>(angle: T) -> Double {
+    return tan(Radian(angle: angle).value)
+}
+
+

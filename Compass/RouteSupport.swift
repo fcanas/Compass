@@ -18,6 +18,10 @@ public func traceDistanceToMultiPoint(trace: Trace, multiPoint: MKMultiPoint) ->
     return map(trace, { loc in reduce(multiPoint.distance(loc), 10000000, { min($0, $1.0)}) } )
 }
 
+public func traceSegmentDistanceToMultiPoint(trace: Trace, multiPoint: MKMultiPoint) -> [Double] {
+    return map(trace, { loc in reduce(multiPoint.segmentDistance(loc), 10000000, { min($0, $1.0)}) } )
+}
+
 public struct Route {
     var distance :CLLocationDistance
     var polyline :MKPolyline

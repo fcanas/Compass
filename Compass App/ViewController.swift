@@ -61,7 +61,8 @@ class ViewController: NSViewController, MKMapViewDelegate {
         
         if let overlay = overlay as? TracePolyline, let p = poly {
             let r = ColoredPathRenderer(polyline:overlay)
-            r.colors = map(normalize(traceDistanceToMultiPoint(trace, poly)), colorMap)
+            
+            r.colors = map(normalize(traceSegmentDistanceToMultiPoint(trace, poly)), colorMap)
             return r
         }
         

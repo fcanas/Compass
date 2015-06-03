@@ -7,6 +7,7 @@
 //
 
 import MapKit
+import CoreLocation
 
 extension MKMultiPoint: SequenceType {
     public typealias Generator = GeneratorOf<MKMapPoint>
@@ -34,6 +35,18 @@ extension MKMultiPoint: CollectionType {
     }
 }
 
+func pointDistanceToSegment(point: CLLocationCoordinate2D, segment: (CLLocationCoordinate2D, CLLocationCoordinate2D)) -> CLLocationDistance {
+    let radius_of_earth :Double = 6371008 // Roughly from WGS84
+    
+    let d13 = (CLLocation(latitude: segment.0.latitude, longitude: segment.0.longitude).distanceFromLocation(CLLocation(latitude: point.latitude, longitude: point.longitude)) * M_PI * 2) / radius_of_earth
+    let bearing13 = bearing(segment.0, point)
+    let bearing12 = bearing(segment.0, segment.1)
+    
+    return asin(sin(d13) * sin(bearing13 - bearing12)) * radius_of_earth
+//    let N = normalize(cross(Vector3(coordinate: segment.0), Vector3(coordinate: segment.1)))
+//    return acos( dot(N, Vector3(coordinate: point)) ) * radius_of_earth
+}
+
 extension MKMultiPoint {
     /// Given an MKMultiPoint and a coordinate, returns an array of the distance from the supplied coordinate to each point in the polyline.
     public func distance(toCoordinate: CLLocationCoordinate2D) -> [CLLocationDistance] {
@@ -46,5 +59,19 @@ extension MKMultiPoint {
         let mkCoordinate = MKMapPointForCoordinate(toLocation.coordinate)
         let mkError = toLocation.horizontalAccuracy
         return map(self) { (MKMetersBetweenMapPoints($0, mkCoordinate), mkError) }
+    }
+    
+    /// Given an MKMultiPoint and a CLLocation, returns an array of the distance from the supplied location and error to segments between each point on the polyline.
+    /// returns an array with 1 fewer element than the number of points in the multiline
+    public func segmentDistance(toLocation: CLLocation) -> [(CLLocationDistance, CLLocationAccuracy)] {
+        let coordinate = toLocation.coordinate
+        let error = toLocation.horizontalAccuracy
+        
+        let coordinates = map(GeneratorSequence(self.generate()), MKCoordinateForMapPoint)
+        
+        var advanceGenerator = coordinates.generate()
+        advanceGenerator.next()
+        var segments = Array(GeneratorSequence(ZipGenerator2(coordinates.generate(), advanceGenerator)))
+        return map(segments) { (pointDistanceToSegment(coordinate, $0), error) }
     }
 }

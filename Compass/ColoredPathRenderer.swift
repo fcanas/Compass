@@ -25,14 +25,10 @@ public class ColoredPathRenderer: MKOverlayRenderer {
             return
         }
         
-        
         var lastPoint = pointForMapPoint(polyline.points()[0])
-        
         
         let ctxLineWidth = CGContextConvertSizeToUserSpace(context, CGSizeMake(lineWidth, lineWidth)).width * contentScaleFactor
         let ctxPixelWidth = CGContextConvertSizeToUserSpace(context, CGSizeMake(1, 1)).width * contentScaleFactor
-        
-        
         
         var offset: CGFloat = 0.0
         for idx in 1...(polyline.pointCount - 1) {
@@ -47,23 +43,15 @@ public class ColoredPathRenderer: MKOverlayRenderer {
             lastPoint = CGPathGetCurrentPoint(path)
             offset = chevronToPoint(chevronPath, point: nextPoint, size: ctxLineWidth, offset: offset)
             
-//            CGContextSetLineJoin(context, kCGLineJoinRound)
-//            CGContextSetLineCap(context, kCGLineCapRound)
-//            
-//            CGContextAddPath(context, path)
-//            CGContextSetStrokeColorWithColor(context, color.CGColor)
-//            CGContextSetLineWidth(context, ctxLineWidth)
-//            CGContextStrokePath(context)
-
             CGContextSetLineJoin(context, kCGLineJoinMiter)
             CGContextSetLineCap(context, kCGLineCapSquare)
             
             CGContextAddPath(context, chevronPath)
             
-            if let c = colors {
-                CGContextSetFillColorWithColor(context, c[idx].CGColor)
-            } else {
+            if colors == nil || idx >= colors?.count ?? 0 {
                 CGContextSetFillColorWithColor(context, CMPSColor.blackColor().CGColor)
+            } else {
+                CGContextSetFillColorWithColor(context, colors![idx].CGColor)
             }
             
             CGContextSetLineWidth(context, ctxPixelWidth)

@@ -38,7 +38,7 @@ extension MKMultiPoint: CollectionType {
 func pointDistanceToSegment(point: CLLocationCoordinate2D, segment: (CLLocationCoordinate2D, CLLocationCoordinate2D)) -> CLLocationDistance {
     let radius_of_earth :Double = 6371008 // Roughly from WGS84
     
-    let d13 = (CLLocation(latitude: segment.0.latitude, longitude: segment.0.longitude).distanceFromLocation(CLLocation(latitude: point.latitude, longitude: point.longitude)) * M_PI * 2) / radius_of_earth
+    let d13 :Radian = distance(segment.0, point)
     let bearing13 = bearing(segment.0, point)
     let bearing12 = bearing(segment.0, segment.1)
     

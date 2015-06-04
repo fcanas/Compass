@@ -11,7 +11,7 @@ import CoreLocation
 func bearing(start: CLLocationCoordinate2D, end: CLLocationCoordinate2D)  -> Radian {
     let (lat1, lng1) = start.asRadians
     let (lat2, lng2) = end.asRadians
-    return Radian(atan2(sin(lng1 - lng2) * cos(lat2), cos(lat1)*sin(lat2) - sin(lat1)*cos(lat2)*cos(lng1-lng2)))
+    return Radian(atan2(sin(lng2 - lng1) * cos(lat2), cos(lat1)*sin(lat2) - sin(lat1)*cos(lat2)*cos(lng2-lng1)))
 }
 
 extension Vector3 {
@@ -38,3 +38,17 @@ extension CLLocationCoordinate2D {
     }
 }
 
+func distance(c1: CLLocationCoordinate2D, c2: CLLocationCoordinate2D) -> CLLocationDistance {
+    let angularDistance :Radian = distance(c1, c2)
+    return angularDistance.value * 6373000
+}
+
+func distance(c1: CLLocationCoordinate2D, c2: CLLocationCoordinate2D) -> Radian {
+    let (lat1, lng1) = c1.asRadians
+    let (lat2, lng2) = c2.asRadians
+
+    let dLat_2 = (lat1 - lat2).value/2
+    let dLng_2 = (lng1 - lng2).value/2
+    let a = sin(dLat_2) * sin(dLat_2) + sin(dLng_2) * sin(dLng_2) * cos(lat1) * cos(lat2)
+    return Radian(2 * atan2(sqrt(a), sqrt(1-a)))
+}

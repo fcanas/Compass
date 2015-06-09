@@ -11,15 +11,17 @@ import MapKit
 import CoreLocation
 
 func traceToMultiPoint(trace: Trace, multiPoint: MKMultiPoint) {
-    var matrix = map(trace, { multiPoint.distance($0) } )
+//    var matrix = trace.map { multiPoint.distance($0) }
 }
 
 public func traceDistanceToMultiPoint(trace: Trace, multiPoint: MKMultiPoint) -> [Double] {
-    return map(trace, { loc in reduce(multiPoint.distance(loc), 10000000, { min($0, $1.0)}) } )
+    return trace.map { loc in
+        multiPoint.distance(loc).reduce(10000000, combine:{ min($0, $1.0) } ) as Double
+    }
 }
 
 public func traceSegmentDistanceToMultiPoint(trace: Trace, multiPoint: MKMultiPoint) -> [Double] {
-    return map(trace, { loc in reduce(multiPoint.segmentDistance(loc), 10000000, { min($0, $1.0)}) } )
+    return trace.map { loc in multiPoint.segmentDistance(loc).reduce(10000000, combine: { min($0, $1.0)}) }
 }
 
 public struct Route {
@@ -30,14 +32,14 @@ public struct Route {
     public init(route: MKRoute) {
         distance = route.distance
         polyline = route.polyline
-        steps = map(route.steps as? [MKRouteStep] ?? [], { RouteStep(routeStep: $0) })
+        steps = route.steps.map { RouteStep(routeStep: $0) }
     }
 }
 
 public class RouteStep :NSObject, MKAnnotation {
     
     public var coordinate :CLLocationCoordinate2D
-    public var title :String {
+    public var title :String? {
         get {
             return instructions
         }
@@ -87,8 +89,8 @@ class Copilot {
         trace.insert(location)
     }
     
-    func addLocations(locations: SequenceOf<CLLocation>) {
-        map(locations, trace.insert)
+    func addLocations(locations: AnySequence<CLLocation>) {
+        locations.map(trace.insert)
     }
     
     init(route: Route) {

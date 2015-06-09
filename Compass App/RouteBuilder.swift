@@ -40,11 +40,11 @@ class RouteBuilder: NSObject {
             if touchPoints.count >= 2 {
                 let request = MKDirectionsRequest()
                 request.transportType = MKDirectionsTransportType.Walking
-                request.setSource(mapItemWithCoordinate(touchPoints[0].coordinate))
-                request.setDestination(mapItemWithCoordinate(touchPoints[1].coordinate))
+                request.source = mapItemWithCoordinate(touchPoints[0].coordinate)
+                request.destination = mapItemWithCoordinate(touchPoints[1].coordinate)
                 
-                MKDirections(request: request).calculateDirectionsWithCompletionHandler { (response: MKDirectionsResponse!, error: NSError!) -> Void in
-                    if let r = response?.routes.first as? MKRoute {
+                MKDirections(request: request).calculateDirectionsWithCompletionHandler { (response: MKDirectionsResponse?, error: NSError?) -> Void in
+                    if let r = response?.routes.first {
                         self.route = Route(route:r)
                         self.mapView.addRoute(self.route!)
                         self.mapView.removeAnnotations(self.touchPoints)

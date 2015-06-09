@@ -12,6 +12,6 @@ public func clamp<T :Comparable>(value :T, minimum :T, maximum :T) -> T {
     return min(max(value, minimum), maximum)
 }
 
-public func ramp(m :Double, b :Double) -> (Double) -> (Double) {
+public func ramp(m :Double, _ b :Double) -> (Double) -> (Double) {
     return { x in m * x + b }
 }

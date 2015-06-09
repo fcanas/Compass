@@ -7,6 +7,7 @@
 //
 
 import MapKit
+import CoreGraphics
 
 #if os(OSX)
     public typealias CMPSColor = NSColor
@@ -26,7 +27,7 @@ public class ChevronPathRenderer: MKOverlayRenderer {
         setNeedsDisplayInMapRect(polyline.boundingMapRect)
     }
     
-    public override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext!) {
+    public override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext) {
         if !MKMapRectIntersectsRect(mapRect, MKMapRectInset(polyline.boundingMapRect, -20, -20)) {
             return
         }
@@ -46,20 +47,19 @@ public class ChevronPathRenderer: MKOverlayRenderer {
         for idx in 1...(polyline.pointCount - 1) {
             let nextPoint = pointForMapPoint(polyline.points()[idx])
             CGPathAddLineToPoint(path, nil, nextPoint.x, nextPoint.y)
-            let lastPoint = CGPathGetCurrentPoint(path)
             offset = chevronToPoint(chevronPath, point: nextPoint, size: ctxLineWidth, offset: offset)
         }
         
-        CGContextSetLineJoin(context, kCGLineJoinRound)
-        CGContextSetLineCap(context, kCGLineCapRound)
+        CGContextSetLineJoin(context, .Round)
+        CGContextSetLineCap(context, .Round)
         
         CGContextAddPath(context, path)
         CGContextSetStrokeColorWithColor(context, color.CGColor)
         CGContextSetLineWidth(context, ctxLineWidth)
         CGContextStrokePath(context)
         
-        CGContextSetLineJoin(context, kCGLineJoinMiter)
-        CGContextSetLineCap(context, kCGLineCapSquare)
+        CGContextSetLineJoin(context, .Miter)
+        CGContextSetLineCap(context, .Square)
         
         CGContextAddPath(context, chevronPath)
         CGContextSetFillColorWithColor(context, chevronColor.CGColor)
@@ -80,8 +80,6 @@ public class ChevronPathRenderer: MKOverlayRenderer {
         
         let w: CGFloat = size / 2
         let h: CGFloat = size / 3
-        
-        let count = Int( (pointDist(startingPoint, point2: point) - offset) / (2.0 * h) ) * 2 / 3
         
         // Create Transform for Chevron
         var t = CGAffineTransformMakeTranslation(startingPoint.x, startingPoint.y)

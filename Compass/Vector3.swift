@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Vector3 :Printable {
+public struct Vector3 :CustomStringConvertible {
     public var dx :Double
     public var dy :Double
     public var dz :Double

@@ -10,11 +10,11 @@ import Foundation
 import CoreLocation
 
 public struct Trace :SequenceType {
-    public typealias Generator = GeneratorOf<CLLocation>
+    public typealias Generator = AnyGenerator<CLLocation>
     
     public func generate() -> Generator {
         var index = 0
-        return GeneratorOf {
+        return anyGenerator {
             if index < self._locations.count {
                 return self._locations[index++]
             }
@@ -23,7 +23,7 @@ public struct Trace :SequenceType {
     }
     
     private var _locations :[CLLocation] = []
-
+    
     public var locations :[CLLocation] {
         return _locations
     }
@@ -32,7 +32,7 @@ public struct Trace :SequenceType {
     
     /// Creates a Trace from an Array of locations by sorting the locations in temporal order
     public init(locations: [CLLocation]) {
-        _locations = locations.sorted { (a, b) -> Bool in
+        _locations = locations.sort { (a, b) -> Bool in
             return a.timestamp.compare(b.timestamp) == NSComparisonResult.OrderedAscending
         }
     }

@@ -39,7 +39,7 @@ extension CLLocationCoordinate2D {
 }
 
 func distance(c1: CLLocationCoordinate2D, c2: CLLocationCoordinate2D) -> CLLocationDistance {
-    let angularDistance :Radian = distance(c1, c2)
+    let angularDistance :Radian = distance(c1, c2: c2)
     return angularDistance.value * 6373000
 }
 

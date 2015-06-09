@@ -15,14 +15,14 @@ func colorMap(value: Double) -> NSColor {
     let redRamp = ramp(2, -0.5)
     let greenRamp = ramp(-2, 0.9)
     let blueRamp = ramp(0, 0.3)
-    println("value: \(value)")
-    println("rgb: (\(redRamp(value)), \(greenRamp(value)), \(blueRamp(value))) ")
+    print("value: \(value)")
+    print("rgb: (\(redRamp(value)), \(greenRamp(value)), \(blueRamp(value))) ")
     
     
     return NSColor(
-        calibratedRed: CGFloat(clamp(redRamp(value), 0, 1)),
-        green: CGFloat(clamp(greenRamp(value), 0, 1)),
-        blue: CGFloat(clamp(blueRamp(value), 0, 1)),
+        calibratedRed: CGFloat(clamp(redRamp(value), minimum: 0, maximum: 1)),
+        green: CGFloat(clamp(greenRamp(value), minimum: 0, maximum: 1)),
+        blue: CGFloat(clamp(blueRamp(value), minimum: 0, maximum: 1)),
         alpha: 1.0)
 }
 
@@ -43,10 +43,10 @@ class ViewController: NSViewController, MKMapViewDelegate {
         let providenceCoord = CLLocationCoordinate2DMake(41.8305, -71.38754)
         let smallSpan = MKCoordinateSpanMake(0.018, 0.018)
         let providenceRegion = MKCoordinateRegionMake(providenceCoord, smallSpan)
-        map(mapView, {$0.region = providenceRegion})
+        mapView.map {$0.region = providenceRegion}
     }
     
-    func mapView(mapView: MKMapView!, didAddAnnotationViews views: [AnyObject]!) {
+    func mapView(mapView: MKMapView, didAddAnnotationViews views: [MKAnnotationView]) {
         if let views = views as? [MKPinAnnotationView] {
             for view in views {
                 view.animatesDrop = true
@@ -57,12 +57,12 @@ class ViewController: NSViewController, MKMapViewDelegate {
     var trace :Trace!
     var poly :MKPolyline!
     
-    func mapView(mapView: MKMapView!, rendererForOverlay overlay: MKOverlay!) -> MKOverlayRenderer! {
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -> MKOverlayRenderer {
         
-        if let overlay = overlay as? TracePolyline, let p = poly {
+        if let overlay = overlay as? TracePolyline {
             let r = ColoredPathRenderer(polyline:overlay)
             
-            r.colors = map(normalize(traceSegmentDistanceToMultiPoint(trace, poly)), colorMap)
+            r.colors = normalize(traceSegmentDistanceToMultiPoint(trace, multiPoint: poly)).map(colorMap)
             return r
         }
         
@@ -73,7 +73,7 @@ class ViewController: NSViewController, MKMapViewDelegate {
             r.chevronColor = NSColor.cyanColor()
             return r
         }
-        return nil
+        return MKOverlayRenderer(overlay: overlay)
     }
     
     @IBAction func clearRoute(sender: AnyObject) {
@@ -82,7 +82,9 @@ class ViewController: NSViewController, MKMapViewDelegate {
     
     @IBAction func clearMap(sender: AnyObject) {
         clearRoute(sender)
-        mapView?.removeOverlays( mapView?.overlays as? [MKOverlay] )
+        if let overlays = mapView?.overlays {
+            mapView?.removeOverlays(overlays)
+        }
     }
     
     @IBAction func makeTrace(sender: AnyObject) {
@@ -106,7 +108,7 @@ extension Trace {
     
     var polyline :TracePolyline {
         get {
-            var coords = map(locations) { $0.coordinate }
+            var coords = locations.map { $0.coordinate }
             return TracePolyline(coordinates: &coords, count: coords.count)
         }
     }

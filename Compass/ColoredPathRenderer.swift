@@ -20,7 +20,7 @@ public class ColoredPathRenderer: MKOverlayRenderer {
         setNeedsDisplayInMapRect(polyline.boundingMapRect)
     }
     
-    public override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext!) {
+    public override func drawMapRect(mapRect: MKMapRect, zoomScale: MKZoomScale, inContext context: CGContext) {
         if !MKMapRectIntersectsRect(mapRect, MKMapRectInset(polyline.boundingMapRect, -20, -20)) {
             return
         }
@@ -43,8 +43,8 @@ public class ColoredPathRenderer: MKOverlayRenderer {
             lastPoint = CGPathGetCurrentPoint(path)
             offset = chevronToPoint(chevronPath, point: nextPoint, size: ctxLineWidth, offset: offset)
             
-            CGContextSetLineJoin(context, kCGLineJoinMiter)
-            CGContextSetLineCap(context, kCGLineCapSquare)
+            CGContextSetLineJoin(context, .Miter)
+            CGContextSetLineCap(context, .Square)
             
             CGContextAddPath(context, chevronPath)
             
@@ -72,8 +72,6 @@ public class ColoredPathRenderer: MKOverlayRenderer {
         
         let w: CGFloat = size / 2
         let h: CGFloat = size / 3
-        
-        let count = Int( (pointDist(startingPoint, point2: point) - offset) / (2.0 * h) ) * 2 / 3
         
         // Create Transform for Chevron
         var t = CGAffineTransformMakeTranslation(startingPoint.x, startingPoint.y)

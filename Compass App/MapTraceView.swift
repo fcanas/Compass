@@ -26,7 +26,7 @@ class MapTraceView: NSView {
         }
     }
     
-    override func acceptsFirstMouse(theEvent: NSEvent) -> Bool {
+    override func acceptsFirstMouse(theEvent: NSEvent!) -> Bool {
         return true
     }
     
@@ -54,7 +54,7 @@ class MapTraceView: NSView {
     }
     
     override func mouseUp(theEvent: NSEvent) {
-        map(trace) {traceCompleted?(trace: $0)}
+        trace.map {traceCompleted?(trace: $0)}
         removeFromSuperview()
     }
     

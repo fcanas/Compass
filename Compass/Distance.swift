@@ -16,7 +16,7 @@ public struct Distance :NumericType {
 }
 
 extension Distance :IntegerLiteralConvertible {
-    public init(integerLiteral: IntegerLiteralType) {
+    public init(integerLiteral: Int) {
         self.init(Double(integerLiteral))
     }
 }

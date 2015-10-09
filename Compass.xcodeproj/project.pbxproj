@@ -224,7 +224,6 @@
 				E7942A411B0CF57F00915E0A /* NumericType.swift */,
 				E7942A431B0CFC0200915E0A /* Distance.swift */,
 				E72DDEDE1B0E2E910068550D /* Trace.swift */,
-				E72DDEE01B0E500A0068550D /* New Group */,
 				E7EFC61D1B163F43006CF4E0 /* RouteSupport.swift */,
 				E75C075C1B17BA9A00E719A4 /* ChevronPathRenderer.swift */,
 				E7F5C5B81B1E362A00441C4D /* ColoredPathRenderer.swift */,
@@ -262,13 +261,6 @@
 				E70725DE1B053B5400716C6F /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E72DDEE01B0E500A0068550D /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		E733EC621B1786F7002161E5 /* Compass-OSX */ = {
